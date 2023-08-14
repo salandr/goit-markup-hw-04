@@ -13,6 +13,12 @@
   --color-dairy: #fcfcfc;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   color: var(--color-slate);
@@ -21,8 +27,12 @@ body {
   letter-spacing: 0.02em;
 }
 
-img {
-  display: block;
+.list {
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
 }
 
 h1,
@@ -31,16 +41,10 @@ h3,
 h4,
 h5,
 h6,
-p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-ul,
-ol {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0;
+p,
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 input,
@@ -54,22 +58,38 @@ button {
   color: currentColor;
 }
 
-.container {
-  width: 1158px;
-  /* width from maket + paddings */
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  /* centify container's content */
-}
-
-.list {
+ul {
   list-style: none;
 }
 
-.link {
+a {
   text-decoration: none;
+  outline: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.container {
+  width: 1158px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 /* Page Studio */
@@ -258,6 +278,7 @@ button {
 
 .company_text {
   color: var(--color-slate);
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -268,6 +289,7 @@ button {
 
 .works_title {
   color: var(--color-navy-blue);
+  font-weight: 700;
   font-size: 36px;
   line-height: 1.11;
   text-align: center;
@@ -276,8 +298,8 @@ button {
 }
 
 .works_list {
-  gap: 24px;
   display: flex;
+  gap: 24px;
 }
 
 .team {
@@ -287,6 +309,7 @@ button {
 
 .team_title {
   color: var(--color-navy-blue);
+  font-weight: 700;
   font-size: 36px;
   line-height: 1.11;
   text-align: center;
@@ -309,7 +332,7 @@ button {
   border-radius: 0px 0px 4px 4px;
 }
 
-.team-wrapper {
+.team_wrapper {
   padding: 32px 0;
 }
 
@@ -325,9 +348,11 @@ button {
 
 .team_job-title {
   color: var(--color-slate);
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   text-align: center;
+  margin-bottom: 8px;
 }
 
 .team_list-icons {
@@ -487,20 +512,17 @@ button {
 .footer_icon-link:focus {
   background-color: var(--color-green);
 }
+
 /* Page Portfolio */
 
 .gallery {
   padding: 96px 0 120px;
 }
 
-.gallery_link {
-  padding: 24px 0;
-}
-
 .gallery-filter_list {
   display: flex;
-  gap: 24px;
   justify-content: center;
+  gap: 24px;
   margin-bottom: 72px;
 }
 
@@ -516,6 +538,10 @@ button {
   border: 1px solid var(--color-cornflower);
   border-radius: 4px;
   padding: 12px 24px 12px 24px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .gallery-filter_button:hover,
@@ -531,6 +557,23 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 48px 24px;
+}
+
+.gallery_link {
+  cursor: pointer;
+  display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gallery_link:hover,
+.gallery_link:focus {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.gallery_link:hover .gallery_overley-text,
+.gallery_link:focus .gallery_overley-text {
+  transform: translateY(0);
 }
 
 .gallery_overley-wrapper {
@@ -571,6 +614,7 @@ button {
 
 .gallery_text {
   color: var(--color-slate);
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
