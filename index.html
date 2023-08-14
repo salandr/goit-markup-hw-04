@@ -20,14 +20,16 @@
   </head>
   <body>
     <header class="header">
-      <div class="container header-container">
+      <div class="header-container container">
         <nav class="header-nav">
           <a class="header-nav_logo-blue link" href="./index.html"
             >Web<span class="header-nav_logo-black">Studio</span></a
           >
           <ul class="header-nav_list list">
             <li class="header-nav_item">
-              <a class="header-nav_link link" href="./index.html">Studio</a>
+              <a class="header-nav_link link current" href="./index.html"
+                >Studio</a
+              >
             </li>
             <li class="header-nav_item">
               <a class="header-nav_link link" href="./portfolio.html"
@@ -59,10 +61,12 @@
     </header>
 
     <main>
-      <section class="hero">
+      <section class="hero hero_bg-image">
         <div class="container">
           <h1 class="hero_title">Effective Solutions for Your Business</h1>
-          <button class="hero_button" type="button">Order Service</button>
+          <button class="hero_button" type="button" data-modal-open>
+            Order Service
+          </button>
         </div>
       </section>
 
